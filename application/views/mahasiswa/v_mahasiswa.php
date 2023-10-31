@@ -1,4 +1,15 @@
-<a href="" class="btn btn-primary btn-sm">Tambah Data</a>
+<a href="<?= base_url('mahasiswa/input_mahasiswa') ?>" class="btn btn-primary btn-sm">Tambah Data</a>
+
+<?php 
+// Notification crud
+
+if($this->session->flashdata('pesan')){
+    echo '<div class="alert alert-success">';
+    echo $this->session->flashdata('pesan');
+    echo '</div>';
+}
+?>
+
 <table class="table table-bordered" id="dataTable" >
     <thead>
         <tr class="text-center" >
