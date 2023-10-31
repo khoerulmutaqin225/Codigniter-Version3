@@ -59,7 +59,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 // Konfigurasi awal di ci
-$autoload['libraries'] = array('session','form_validation', 'upload',);
+$autoload['libraries'] = array('session','form_validation', 'upload','database');
 
 /*
 | -------------------------------------------------------------------
