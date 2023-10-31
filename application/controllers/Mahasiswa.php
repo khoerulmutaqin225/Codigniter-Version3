@@ -1,49 +1,51 @@
-<?php 
+<?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 // Nama Class Harus Sama Dengan Nama Filenya
-class Mahasiswa extends CI_Controller {
+class Mahasiswa extends CI_Controller
+{
 
     // Dalam Sebuah Class Terdapat Sebuah Function
 
     // load di constraktor
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model("m_mahasiswa");
     }
     public function index()
     {
-            // echo '<h1>Ini Page Home!</h1>';
-            $data = [
-                'judul' => 'Mahasiswa',
-                'subjudul' => '',
-                'mhs' => $this->m_mahasiswa->all_data(),
-                'page' => 'mahasiswa/v_mahasiswa', //file page di folder view
-            ];
-            $this->load->view('v_template', $data, false);
-
+        // echo '<h1>Ini Page Home!</h1>';
+        $data = [
+            'judul' => 'Mahasiswa',
+            'subjudul' => '',
+            'mhs' => $this->m_mahasiswa->all_data(),
+            'page' => 'mahasiswa/v_mahasiswa', //file page di folder view
+        ];
+        $this->load->view('v_template', $data, false);
     }
-    
-    public function input_mahasiswa(){
+
+    public function input_mahasiswa()
+    {
         // Validation form
-        $this->form_validation->set_rules('nim', 'NIM', 'required',[
-            'required'=> '%s Wajib Diisi!'
-        ]);
-        
-        $this->form_validation->set_rules('nama_mahasiswa', 'Nama Mahasiswa', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('nim', 'NIM', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('nama_mahasiswa', 'Nama Mahasiswa', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
-        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', [
+            'required' => '%s Wajib Diisi!'
+        ]);
+
+        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
         if ($this->form_validation->run() == FALSE) {
@@ -53,7 +55,6 @@ class Mahasiswa extends CI_Controller {
                 'page' => 'mahasiswa/v_input_mahasiswa', //file page di folder view
             );
             $this->load->view('v_template', $data, false);
-
         } else {
             // Jika lolos validasi
             $data = array(
@@ -70,37 +71,38 @@ class Mahasiswa extends CI_Controller {
         }
     }
 
-    public function edit_mahasiswa($id_mahasiswa){
+    public function edit_mahasiswa($id_mahasiswa)
+    {
         // Validation form
-        $this->form_validation->set_rules('nim', 'NIM', 'required',[
-            'required'=> '%s Wajib Diisi!'
-        ]);
-        
-        $this->form_validation->set_rules('nama_mahasiswa', 'Nama Mahasiswa', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('nim', 'NIM', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
-        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('nama_mahasiswa', 'Nama Mahasiswa', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
-        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
 
-        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required',[
-            'required'=> '%s Wajib Diisi!'
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', [
+            'required' => '%s Wajib Diisi!'
+        ]);
+
+        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required', [
+            'required' => '%s Wajib Diisi!'
         ]);
         if ($this->form_validation->run() == FALSE) {
 
-        // Validation form
-         $data = array(
+            // Validation form
+            $data = array(
                 'judul' => 'Edit Mahasiswa',
                 'mhs' => $this->m_mahasiswa->detail_data($id_mahasiswa),
                 'page' => 'mahasiswa/v_edit_mahasiswa', //file page di folder view
             );
             $this->load->view('v_template', $data, false);
-        } else{
+        } else {
             $data = array(
                 'id_mahasiswa' => $id_mahasiswa,
                 'nim' => $this->input->post('nim'),
@@ -114,5 +116,13 @@ class Mahasiswa extends CI_Controller {
             redirect('mahasiswa/index');
             # code...
         }
-     }
+    }
+
+    public function delete_mahasiswa($id_mahasiswa)
+    {
+        $data = array('id_mahasiswa' => $id_mahasiswa);
+        $this->m_mahasiswa->delete_data($data);
+        $this->session->set_flashdata('pesan', 'Data Mahasiswa Berhasil Di Hapus !!!');
+        redirect('mahasiswa/index');
+    }
 }
