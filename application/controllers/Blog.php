@@ -8,12 +8,21 @@ class Blog extends CI_Controller {
     {
             // echo 'Hello World!';
             // echo 'Belajar Codigniter';
-            $this->load->view('blog/v_index');
+            $data = array(
+                'judul' => 'Halaman Blog',
+                'subjudul' => 'Halaman Blog Website',
+            );
+            $this->load->view('blog/v_index', $data, false);
     }
 
     public function comments()
     {
-        $this->load->view('blog/v_comment');
+        
+        $data = array(
+            'judul' => 'Halaman Comment',
+            'subjudul' => 'Halaman Comment Website',
+        );           
+        $this->load->view('blog/v_comment', $data, false);
             
     }
 
