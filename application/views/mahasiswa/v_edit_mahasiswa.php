@@ -17,36 +17,36 @@
             </div>'
         );
         ?>
-        <?php echo form_open('mahasiswa/input_mahasiswa') ?>
+        <?php echo form_open('mahasiswa/edit_mahasiswa/'.$mhs->id_mahasiswa) ?>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>NIM</label>
-                    <input type="text" name="nim" class="form-control" placeholder="NIM">
+                    <input value="<?= $mhs->nim ?>" type="text" name="nim" class="form-control" placeholder="NIM">
                 </div>
 
                 <div class="form-group">
                     <label>Nama Mahasiswa</label>
-                    <input type="text" name="nama_mahasiswa" class="form-control" placeholder="Nama Mahasiswa">
+                    <input value="<?= $mhs->nama_mahasiswa ?>" type="text" name="nama_mahasiswa" class="form-control" placeholder="Nama Mahasiswa">
                 </div>
 
                 <div class="form-group">
                     <label>Tempat Lahir</label>
-                    <input name="tempat_lahir" class="form-control">
+                    <input value="<?= $mhs->tempat_lahir ?>" name="tempat_lahir" class="form-control">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Jenis Kelamin</label>
-                        <select name="jenis_kelamin" class="form-control">
-                            <option value="">--Jenis Kelamin--</option>
-                            <option value="L">Laki - laki</option>
-                            <option value="P">Perempuan</option>
+                        <select  name="jenis_kelamin" class="form-control">
+                            <option value="">--Jenis Kelamin--</option>                            
+                            <option value="L" <?= $mhs->jenis_kelamin == 'L' ? 'selected' :'' ?>>Laki - laki</option>
+                            <option value="P" <?= $mhs->jenis_kelamin == 'P' ? 'selected' :''?>>Perempuan</option>
                         </select>
                 </div>
                 <div class="form-group">
                     <label>tanggal Lahir</label>
-                    <input type="date" name="tgl_lahir" class="form-control">
+                    <input value="<?= $mhs->tgl_lahir ?>" type="date" name="tgl_lahir" class="form-control">
                 </div>
 
                 <div class="form-group">
