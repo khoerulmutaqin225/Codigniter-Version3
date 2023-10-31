@@ -58,7 +58,8 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array();
+// Konfigurasi awal di ci
+$autoload['libraries'] = array('session','form_validation', 'upload',);
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +90,8 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+// Konfigurasi kedua
+$autoload['helper'] = array('url', 'form', 'file');
 
 /*
 | -------------------------------------------------------------------
