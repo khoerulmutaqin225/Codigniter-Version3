@@ -6,14 +6,14 @@ class Blog extends CI_Controller {
     // Dalam Sebuah Class Terdapat Sebuah Function
     public function index()
     {
-            echo 'Hello World!';
-            echo 'Belajar Codigniter';
-
+            // echo 'Hello World!';
+            // echo 'Belajar Codigniter';
+            $this->load->view('blog/v_index');
     }
 
     public function comments()
     {
-            echo 'Look at this!';
+        $this->load->view('blog/v_comment');
             
     }
 

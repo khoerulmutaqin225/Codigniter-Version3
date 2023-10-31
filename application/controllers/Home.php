@@ -6,14 +6,14 @@ class Home extends CI_Controller {
     // Dalam Sebuah Class Terdapat Sebuah Function
     public function index()
     {
-            echo '<h1>Ini Page Home!</h1>';
+            // echo '<h1>Ini Page Home!</h1>';
+            $this->load->view('v_home');
 
     }
 
     public function about()
     {
-            echo 'This is page about';
-            
+        $this->load->view('v_about');
     }
 
 }
