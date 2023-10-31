@@ -207,13 +207,12 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"> <?= $judul ?></h1>
-					<?php 
+                    <?php 
 					
 					if($page){
 						$this->load->view($page);
 						}
 					?>
-
                 </div>
                 <!-- /.container-fluid -->
 
